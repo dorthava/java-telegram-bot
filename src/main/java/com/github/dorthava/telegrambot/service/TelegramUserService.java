@@ -1,5 +1,6 @@
 package com.github.dorthava.telegrambot.service;
 
+import com.github.dorthava.telegrambot.models.State;
 import com.github.dorthava.telegrambot.models.TelegramUser;
 
 import java.util.List;

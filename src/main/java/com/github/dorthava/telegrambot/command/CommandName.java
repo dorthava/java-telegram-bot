@@ -4,7 +4,9 @@ public enum CommandName {
     START("/start"),
     STOP("/stop"),
     HELP("/help"),
-    STAT("/stat");
+    STAT("/stat"),
+    ALL_ACTIVE_NOTES("/all_active_notes"),
+    CREATE_NOTE("/create_note");
 
     private final String commandName;
 
