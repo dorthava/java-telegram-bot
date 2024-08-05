@@ -1,2 +1,2 @@
-# repository-template
-Template repository for all the projects.
+# java-telegram-bot
+Telegram bot for saving notes
