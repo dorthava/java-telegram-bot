@@ -31,7 +31,7 @@ public class CommandContainer {
         this.commandMap.put(CommandName.ALL_ACTIVE_NOTES.getCommandName(), new AllActiveNotesCommand(sendBotMessageService, noteService));
         this.commandMap.put(CommandName.CREATE_NOTE.getCommandName(), new CreateNoteCommand(sendBotMessageService, noteService,
                 userStateService));
-
+        this.commandMap.put(CommandName.DELETE_NOTE.getCommandName(), new DeleteNoteCommand(sendBotMessageService, noteService, userStateService));
 
     }
 

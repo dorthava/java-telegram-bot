@@ -2,6 +2,7 @@ package com.github.dorthava.telegrambot.bot;
 
 import com.github.dorthava.telegrambot.command.CommandContainer;
 import com.github.dorthava.telegrambot.command.CommandName;
+import com.github.dorthava.telegrambot.models.State;
 import com.github.dorthava.telegrambot.models.UserState;
 import com.github.dorthava.telegrambot.service.UserStateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,11 @@ public class ProductsTelegramBot extends TelegramLongPollingBot {
         String chatId = update.getMessage().getChatId().toString();
         if (update.hasMessage() && update.getMessage().hasText()) {
             Optional<UserState> optionalUserState = userStateService.findByChatId(chatId);
-            if(optionalUserState.isEmpty() || optionalUserState.get().getState() == 0) {
+            if(optionalUserState.isEmpty() || optionalUserState.get().getState() == State.WAITING_FOR_COMMAND.ordinal()) {
                 String message = update.getMessage().getText().trim();
                 commandContainer.retrieveCommand(message).execute(update);
+            } else if(optionalUserState.get().getState() == State.WAITING_FOR_INDEX_TO_BE_DELETED.ordinal()) {
+                commandContainer.retrieveCommand(CommandName.DELETE_NOTE.getCommandName()).execute(update);
             } else {
                 commandContainer.retrieveCommand(CommandName.CREATE_NOTE.getCommandName()).execute(update);
             }

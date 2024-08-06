@@ -1,0 +1,1 @@
+ALTER TABLE tg_user ADD PRIMARY KEY (chat_id);

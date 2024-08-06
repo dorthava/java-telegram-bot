@@ -6,7 +6,8 @@ public enum CommandName {
     HELP("/help"),
     STAT("/stat"),
     ALL_ACTIVE_NOTES("/all_active_notes"),
-    CREATE_NOTE("/create_note");
+    CREATE_NOTE("/create_note"),
+    DELETE_NOTE("/delete_note");
 
     private final String commandName;
 

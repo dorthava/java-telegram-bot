@@ -56,6 +56,7 @@ public class CreateNoteCommand implements Command {
                 } catch (DateTimeParseException e) {
                     System.err.println(e.getMessage());
                     noteService.deleteNoteById(userState.getNoteId());
+                    sendBotMessageService.sendMessage(chatId, "Неверный формат времени. Повторите снова.\n");
                 }
             }
         }

@@ -12,9 +12,13 @@ public class HelpCommand implements Command {
                     + "%s - начать работу со мной\n"
                     + "%s - приостановить работу со мной\n"
                     + "%s - получить помощь в работе со мной\n"
+                    + "<b>Работа с заметками:</b>\n"
+                    + "%s - создание активной заметки\n"
+                    + "%s - удаление заметки\n"
                     + "%s - получить весь список активных заметок\n",
             CommandName.START.getCommandName(), CommandName.STOP.getCommandName(),
-            CommandName.HELP.getCommandName(), CommandName.ALL_ACTIVE_NOTES.getCommandName());
+            CommandName.HELP.getCommandName(), CommandName.CREATE_NOTE.getCommandName(),
+            CommandName.DELETE_NOTE.getCommandName(), CommandName.ALL_ACTIVE_NOTES.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
