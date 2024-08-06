@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -37,7 +38,9 @@ public class EventCheckServiceImpl implements EventCheckService {
     public void notifyUsers(List<Note> noteList) {
         for (Note note : noteList) {
             String chatId = note.getChatId();
-            sendBotMessageService.sendMessage(chatId, note.getText());
+            sendBotMessageService.sendMessage(chatId, "Произошло событие:\n\"" + note.getText() + "\"\n" +
+                    "Дата: " + note.getNotificationTime().format(DateTimeFormatter.ISO_LOCAL_DATE)
+            + "\nВремя: " + note.getNotificationTime().format(DateTimeFormatter.ISO_LOCAL_TIME));
             noteService.deleteNoteById(note.getId());
         }
     }
