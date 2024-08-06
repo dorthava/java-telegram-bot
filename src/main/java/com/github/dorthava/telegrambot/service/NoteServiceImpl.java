@@ -5,6 +5,7 @@ import com.github.dorthava.telegrambot.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,11 +25,6 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public List<Note> retrieveAllNotActiveNotes(String chatId) {
-        return noteRepository.findAllByChatIdAndActiveFalse(chatId);
-    }
-
-    @Override
     public void save(Note note) {
         noteRepository.save(note);
     }
@@ -41,5 +37,10 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public void deleteNoteById(Long id) {
         noteRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Note> findAllByNotificationTimeLessThanEqual(LocalDateTime notificationTime) {
+        return noteRepository.findAllByNotificationTimeLessThanEqual(notificationTime);
     }
 }
